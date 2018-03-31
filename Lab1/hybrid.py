@@ -1,6 +1,7 @@
 import numpy as np
 import numpy.fft as fft
 import cv2
+import sys
 
 class hybrid:
 	def __init__(self, image1, image2):
@@ -46,7 +47,7 @@ def GaussianFilter(row, col, cutoff, highPass):
 	return np.array([[gaussian(i,j) for j in range(col)] for i in range(row)])
 
 if __name__ == "__main__":
-	image1 = cv2.imread("dog.bmp")
-	image2 = cv2.imread("cat.bmp")
+	image1 = cv2.imread(sys.argv[1])
+	image2 = cv2.imread(sys.argv[2])
 	HB = hybrid(image1, image2)
 	HB.run()
